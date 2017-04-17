@@ -1,0 +1,78 @@
+body {
+  display: table;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: url(/static/homepage/media/guitars.jpeg) no-repeat center center scroll;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+.last5_size {
+  max-width: 80px;
+  max-height: 80px;
+  margin: 5px;
+}
+
+.last5 {
+  text-align: center;
+}
+
+.product_img {
+  margin: 10px;
+  max-height: 400px;
+}
+
+#quantity-input {
+  max-width: 50px;
+}
+
+.opacity {
+  background-color: rgba(245, 245, 245, 0.8);
+  padding: 15px;
+  padding-top: 0;
+  border-radius: 5px;
+}
+
+.top-padding {
+  padding-top: 10px;
+}
+
+.remove-margin {
+  margin-top: 0;
+}
+
+#id_quantity {
+  max-width: 100px;
+  display: inline-block;
+}
+
+
+#quantity-form {
+  display: inline-block;
+}
+
+
+#form {
+  display: inline-block;
+}
+
+
+@media only screen and (max-width: 1050px) {
+    .last5_size {
+      display: inline;
+    }
+    .opacity {
+      background-color: rgba(245, 245, 245, 0.8);
+      padding: 10px;
+      padding-top: 0;
+      margin-top: 10px;
+      border-radius: 5px;
+    }
+    .last5-thumbnail {
+      display: inline-block;
+    }
+}

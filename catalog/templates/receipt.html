@@ -1,0 +1,54 @@
+<%! from catalog import models as cmod %>
+<%! from decimal import Decimal %>
+<%inherit file="app_base.htm" />
+
+
+<%block name="midsection">
+<div class="opacity container">
+  <h1 class="text-center">Thank you for your purchase!</h1>
+  <table class="table table-striped">
+    <tr>
+      <th class="text-center">Picture</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Quantitiy</th>
+      <th>Total</th>
+    </tr>
+    %for s in saleitems:
+    <tr>
+      <td><img class="size" src="${ s.product.pictures.first().path }"/></td>
+      <td><a class="btn btn-primary" href="/catalog/detail/${s.product.id}/">${ s.product.name }</a></td>
+      <td>$${ s.product.price }</td>
+      <td>${ s.quantity }</td>
+      <td>${ s.get_extended_amount() }
+    </tr>
+    %endfor
+    </table>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8"></div>
+        <div class="col-md-4">
+          <table class="table table-striped">
+            <tr>
+              <td>Subtotal</td>
+              <td>$${ sale.subtotal }</td>
+            </tr>
+            <tr>
+              <td>Tax</td>
+              <td>$${ tax }</td>
+            </tr>
+            <tr>
+              <td>Shipping</td>
+              <td>${ sale.shipping }</td>
+            </tr>
+            <tr>
+              <td>Total</td>
+              <td>$${ sale.total }</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+
+</%block>

@@ -1,0 +1,61 @@
+<%! from catalog import models as cmod %>
+<%! from decimal import Decimal %>
+<%inherit file="app_base.htm" />
+
+
+<%block name="midsection">
+<div class="opacity container">
+  <table class="table table-striped">
+    <tr>
+      <th class="text-center">Picture</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Quantitiy</th>
+      <th>Total</th>
+      <th>Actions</th>
+    </tr>
+    %for c in cart:
+    <tr>
+      <td><img class="size" src="${ c.product.pictures.first().path }"/></td>
+      <td><a class="btn btn-primary" href="/catalog/detail/${c.product.id}/">${ c.product.name }</a></td>
+      <td>$${ c.product.price }</td>
+      <td>${ c.quantity }</td>
+      <td>${ c.get_extended_amount() }
+      <td><a class="btn btn-danger" href="/catalog/shoppingcart.delete/${c.id}/">Delete</a></td>
+    </tr>
+    %endfor
+    </table>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8"></div>
+        <div class="col-md-4">
+          <table class="table table-striped">
+            <tr>
+              <td>Subtotal</td>
+              <td>$${ request.user.get_cart_subtotal() }</td>
+            </tr>
+            <tr>
+              <td>Tax</td>
+              <td>$${ request.user.calculate_tax() }</td>
+            </tr>
+            <tr>
+              <td>Shipping</td>
+              <td>$10</td>
+            </tr>
+            <tr>
+              <td>Total</td>
+              <td>$${ request.user.calculate_total_with_shipping() }</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+<div class="container">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <a href="/catalog/shoppingcart.clear_cart/" class="btn btn-danger btn-block" id="button-padding">Clear Cart</a>
+    <a href="/catalog/shippingaddress/" class="btn btn-success btn-block" id="button-padding">Continue to Shipping</a>
+  </div>
+</div>
+</%block>

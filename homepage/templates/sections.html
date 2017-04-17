@@ -1,0 +1,42 @@
+<%inherit file="app_base.htm" />
+
+<%block name="title">Sections</%block>
+
+<%block name="maintenance_message">
+  <p id="maintenance">This is a maintenance message.</p>
+</%block>
+
+<%block name="alert_section">
+  <div class="alert alert-info alert-dismissible" id="section-alert" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <strong>Welcome!</strong> You are now logged in.
+  </div>
+</%block>
+
+<%block name="add_breadcrumb">
+  <li class="active">Sections</li>
+</%block>
+
+<%block name="top">
+  <div id="top">
+    <p id="remove-margin">Top Section</p>
+  </div>
+</%block>
+
+<%block name="left_sidebar">
+    <p id="left">Left Sidebar</p>
+</%block>
+
+<%block name="content">
+  <div id="center">
+    <p>Center</p>
+  </div>
+</%block>
+
+<%block name="right_sidebar">
+  <div id="right">
+    <p>Right Sidebar</p>
+  </div>
+</%block>

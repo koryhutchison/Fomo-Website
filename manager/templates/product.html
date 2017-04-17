@@ -1,0 +1,16 @@
+<%! from catalog import models as cmod %>
+<%inherit file="app_base.htm" />
+
+<%block name="title">Product</%block>
+
+<%block name="add_breadcrumb">
+  <li><a href="/manager/products">Products</a></li>
+  <li class="active">Product</li>
+</%block>
+
+<%block name="content">
+    <div>
+      ${ form }
+    </div>
+    <a href="/manager/products/" class="btn btn-primary btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Products</a>
+</%block>

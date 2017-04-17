@@ -1,0 +1,14 @@
+<%! from catalog import models as cmod %>
+<%inherit file="/homepage/templates/base_ajax.htm" />
+
+
+<%block name="content">
+  <div class="text-center">
+    %for p in pictures:
+      <img class="product-picture" src="${p.path}">
+    %endfor
+
+    <button id="picture-btn-previous" class="btn btn-default">Previous</button>
+    <button id="picture-btn-next" class="btn btn-default">Next</button>
+  </div>
+</%block>

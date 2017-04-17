@@ -1,0 +1,10 @@
+#opacity {
+  background-color: rgba(245, 245, 245, 0.8);
+  padding-left: 0;
+  padding-right: 0;
+  margin-bottom: 20px;
+}
+
+#button-padding {
+  margin-bottom: 10px;
+}

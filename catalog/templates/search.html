@@ -1,0 +1,57 @@
+<%! from catalog import models as cmod %>
+<%inherit file="app_base.htm" />
+
+
+<%block name="left_sidebar">
+  <ul class="nav nav-pills nav-stacked">
+  <li><a class="categories" href="/catalog/index/">All Categories</a></li>
+  %for c in categories:
+    <li><a class="categories" href="/catalog/index.filter/${ c.name }/">${ c.name }</a></li>
+    %endfor
+  </ul>
+</%block>
+
+<%block name="content">
+<div class="opacity">
+<form class="top-padding" action="/catalog/search" method="GET">
+<div id="search-box" class="input-group">
+  <input type="text" class="form-control" name="search" placeholder="Search for...">
+  <span class="input-group-btn">
+    <button class="btn btn-default" type="submit">Go!</button>
+  </span>
+</div>
+</form>
+%if search_result:
+%for s in search_result:
+  <a class="search_product" href="/catalog/detail/${ s.id }/">
+    <div class="well well-lg">
+      <div class="row">
+        <div class="col-md-5">
+          <img class="size" src="${ s.pictures.first().path }"/>
+        </div>
+        <div class="col-md-7">
+          <h4>${ s.name }</h4>
+          <p>Price: $${ s.price }</p>
+          <p>${ s.description }</p>
+        </div>
+      </div>
+    </div>
+  </a>
+%endfor
+%else:
+  <h3 id="no-result">No Result</h3>
+%endif
+</div>
+</%block>
+
+<%block name="right_sidebar">
+<div class="last5 opacity">
+<h6 id="remove-margin" class="top-padding">Recently Viewed Products</h6>
+%for i in last5products:
+<div class="last5-thumbnail">
+  <a href="/catalog/detail/${i.id}/"><img class="last5_size" src="${ i.pictures.first().path }"/></a>
+  <p>${i.name}</p>
+</div>
+  %endfor
+  </div>
+</%block>

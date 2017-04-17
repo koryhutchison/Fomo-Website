@@ -1,0 +1,16 @@
+<%! from account import models as amod %>
+<%inherit file="app_base.htm" />
+
+<%block name="title">Edit Account</%block>
+
+<%block name="add_breadcrumb">
+  <li class="active">Edit Account</li>
+</%block>
+
+<%block name="content">
+    <div>
+      ${ form }
+    </div>
+    <a href="/account/index/" class="btn btn-primary btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to my account</a>
+    <a href="/account/changepassword/${ user.id }/" class="btn btn-info pull-right">Change Password</a>
+</%block>

@@ -1,0 +1,20 @@
+<%inherit file="app_base.htm" />
+
+
+<%block name="title">Login</%block>
+
+<%block name="add_breadcrumb">
+  <li class="active">Login</li>
+</%block>
+
+<%block name="content">
+  <div id="opacity">
+      <h1 id="center">Login</h1>
+      <form method="POST">
+          ${ csrf_input }
+          ${ form.as_p() }
+          <input type="submit" class="btn btn-primary" value="Submit" />
+          <a href="/account/signup/" class="pull-right btn btn-success">Sign Up</a>
+      </form>
+  </div>
+</%block>

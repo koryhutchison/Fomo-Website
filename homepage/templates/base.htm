@@ -1,0 +1,138 @@
+## this is the skeleton of all pages on in this app - it defines the basic html tags
+
+## imports
+<%! from django_mako_plus import get_template_css, get_template_js %>
+<%! from datetime import datetime %>
+
+
+<!DOCTYPE html>
+<html>
+  <meta charset="UTF-8">
+  <head>
+
+    <title><%block name="title"></%block></title>
+
+    ## add any site-wide scripts or CSS here; for example, jquery:
+    <script src="${ STATIC_URL }homepage/media/jquery-3.1.1.min.js"></script>
+    <script src="${ STATIC_URL }homepage/media/jquery.datetimepicker.full.js"></script>
+    <script src="${ STATIC_URL }homepage/media/jquery.loadmodal.js"></script>
+    <script src="${ STATIC_URL }homepage/media/jquery.form.js"></script>
+    ## Bootstrap CSS
+    <link rel="stylesheet" type="text/css" href="${ STATIC_URL }homepage/media/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="${ STATIC_URL }homepage/media/bootstrap/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="${ STATIC_URL }homepage/media/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="${ STATIC_URL }homepage/media/jquery.datetimepicker.min.css">
+    <link rel="icon" href="${ STATIC_URL }homepage/media/Site-icon.png" type="image/x-icon">
+
+    ## Custom CSS
+    ${ get_template_css(self, request, context) }
+
+</head>
+
+    <div>
+      <%block name="maintenance_message">
+      </%block>
+    </div>
+
+<%block name="header">
+    <div>
+      <%block name="alert_section">
+      </%block>
+    </div>
+
+    <nav class="navbar navbar-inverse" id="navbar-padding" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/homepage/index">
+                  <img id="logo" class="img-rounded"src="${ STATIC_URL }/homepage/media/logo-2.png" />
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                  <%block name="navbar">
+
+                  </%block>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                  <!-- This helps facilitate changing the navbar when someone is logged in. -->
+                  %if request.user.is_authenticated:
+                    <li class="dropdown">
+                      <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Welcome, ${request.user.first_name}<span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="/account/user/${ user.id }/"><i class="fa fa-user-circle-o"></i> View Account</a></li>
+                        <li><a href="/manager/products/"><i class="fa fa-tags"></i> View Products</a></li>
+                        <li><a href="/manager/users/"><i class="fa fa-user-circle-o"></i> View Users</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/account/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
+                      </ul>
+                    </li>
+                    <li class="shopping-cart"><a href="/catalog/shoppingcart/" id="cart-badge" class="badge1" data-badge="${ request.user.get_cart_count() }"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                  %else:
+                    <li><a id="login-modal-button"><i class="fa fa-sign-in"></i> Login</a></li>
+                  %endif
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+</%block>
+
+<body>
+  <%block name="breadcrumb">
+    <ol class="breadcrumb">
+      <li><a href="/homepage/index/">Home</a></li>
+      <%block name="app_breadcrumb">
+      </%block>
+    </ol>
+  </%block>
+
+    <%block name="top">
+
+    </%block>
+<div id="main-content">
+<%block name="midsection">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <%block name="left_sidebar">
+      </%block>
+    </div>
+
+    <div class="col-md-8">
+      <%block name="content">
+      </%block>
+    </div>
+
+    <div class="col-md-2">
+      <%block name="right_sidebar">
+      </%block>
+    </div>
+  </div>
+</div>
+</%block>
+</div>
+<%block name="footer">
+  <footer class="footer">
+    <div class="container text-center">
+      <p class="text-muted" id="footer-text">&copy; FOMO ${datetime.now().year}</p>
+    </div>
+  </footer>
+</%block>
+
+    ## Bootstrap JS
+    <script src="${STATIC_URL}/homepage/media/bootstrap/bootstrap.min.js"></script>
+
+    ## render the JS with the same name as this page
+    ${ get_template_js(self, request, context) }
+
+  </body>
+</html>

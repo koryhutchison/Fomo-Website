@@ -1,0 +1,50 @@
+<%! from catalog import models as cmod %>
+<%! from account import models as amod %>
+<%inherit file="app_base.htm" />
+
+
+<%block name="left_sidebar">
+  <ul class="nav nav-pills nav-stacked">
+  <li><a class="categories" href="/catalog/index/">All Categories</a></li>
+  %for c in categories:
+    <li><a class="categories" href="/catalog/index.filter/${ c.name }/">${ c.name }</a></li>
+    %endfor
+  </ul>
+</%block>
+
+<%block name="content">
+<div class="opacity">
+  <form class="top-padding" action="/catalog/search" method="GET">
+  <div id="search-box" class="input-group">
+    <input type="text" class="form-control" name="search" placeholder="Search for...">
+    <span class="input-group-btn">
+      <button class="btn btn-default" type="submit">Go!</button>
+    </span>
+  </div>
+  </form>
+  <div class="tile-outer">
+  %for p in products:
+      <div class="tile-container">
+        <div class="tile-image">
+          <a href="/catalog/detail/${ p.id }/"><img class="size" src="${ p.pictures.first().path }"/></a>
+        </div>
+        <div class="tile-title">
+          ${ p.name }
+        </div>
+      </div>
+  %endfor
+  </div>
+</div>
+</%block>
+
+<%block name="right_sidebar">
+<div class="last5 opacity">
+<h5 id="remove-margin" class="top-padding">Recently Viewed Products</h5>
+  %for i in last5products:
+  <div class="last5-thumbnail">
+    <a href="/catalog/detail/${i.id}/"><img class="last5_size" src="${ i.pictures.first().path }"/></a>
+    <p>${i.name}</p>
+  </div>
+    %endfor
+  </div>
+</%block>

@@ -1,0 +1,96 @@
+body {
+  display: table;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: url(/static/homepage/media/search.jpg) no-repeat center center scroll;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+.size {
+  display: block;
+  max-width: 250px;
+  max-height: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  border: solid black;
+}
+
+.last5_size {
+  max-width: 80px;
+  max-height: 80px;
+  margin: 5px;
+}
+
+.last5 {
+  text-align: center;
+}
+
+.nav-pills {
+  background-image: -webkit-linear-gradient(top, #e8e8e8 0%, #f5f5f5 100%);
+  background-image: -o-linear-gradient(top, #e8e8e8 0%, #f5f5f5 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#e8e8e8), to(#f5f5f5));
+  background-image: linear-gradient(to bottom, #e8e8e8 0%, #f5f5f5 100%);
+  border-radius: 5px;
+}
+
+#search-box {
+  margin-left: 50%;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+a.search_product {
+  color: black;
+  text-decoration: none;
+}
+.info {
+  display: inline-block;
+}
+
+#no-result {
+  text-align: center;
+}
+
+a.categories {
+  color: black;
+}
+
+.opacity {
+  background-color: rgba(245, 245, 245, 0.8);
+  padding: 10px;
+  padding-top: 0;
+  border-radius: 5px;
+}
+
+.top-padding {
+  padding-top: 10px;
+}
+
+#remove-margin {
+  margin-top: 0;
+}
+
+.well {
+  border: solid black;
+}
+
+@media only screen and (max-width: 961px) {
+    .last5_size {
+      display: inline;
+    }
+    .opacity {
+      background-color: rgba(245, 245, 245, 0.8);
+      padding: 10px;
+      padding-top: 0;
+      margin-top: 10px;
+      border-radius: 5px;
+    }
+    .last5-thumbnail {
+      display: inline-block;
+    }
+}

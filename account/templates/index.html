@@ -1,0 +1,9 @@
+<%inherit file="app_base.htm" />
+
+<%block name="content">
+
+    <div class="content">
+      <h3>Congratulations -- you've successfully logged in!</h3>
+      <a href="/account/changepassword/${ user.id }" class="btn btn-success">Change Password</a>
+    </div>
+</%block>

@@ -1,0 +1,28 @@
+<%inherit file="base.htm" />
+
+<%block name="navbar">
+  <li class="${ 'active' if request.dmp_router_page == 'index' else ''}">
+      <a href="/homepage/index">Home</a>
+  </li>
+  <li class="${ 'active' if request.dmp_router_page == 'about' else ''}">
+      <a href="/about">About</a>
+  </li>
+  <li class="${ 'active' if request.dmp_router_page == 'contact' else ''}">
+      <a href="/contact">Contact</a>
+  </li>
+  <li class="${ 'active' if request.dmp_router_page == 'terms' else ''}">
+      <a href="/terms">Terms</a>
+  </li>
+  <li class="${ 'active' if request.dmp_router_page == 'faq' else ''}">
+      <a href="/faq">FAQ</a>
+  </li>
+  <li class="${ 'active' if request.dmp_router_page == '/catalog/index/' else ''}">
+      <a href="/catalog/index/">Catalog</a>
+  </li>
+  <%block name="navbar_add">
+  </%block>
+</%block>
+<%block name="app_breadcrumb">
+  <%block name="add_breadcrumb">
+  </%block>
+</%block>

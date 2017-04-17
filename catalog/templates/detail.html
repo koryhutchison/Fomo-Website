@@ -1,0 +1,58 @@
+<%! from catalog import models as cmod %>
+<%inherit file="app_base.htm" />
+
+<%block name="add_breadcrumb">
+  <li class="active">Detail</li>
+</%block>
+
+<%block name="left_sidebar">
+  <a class="btn btn-primary" href="/catalog/index/"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Catalog</a>
+</%block>
+
+<%block name="content">
+<div class="opacity">
+  <h1 id="product-name" class="remove-margin">${product.name}</h1>
+  <div class="row">
+    <div class="col-md-6">
+    <br>
+      <strong>Price: </strong>$${product.price}
+      <br>
+      <strong>Description: </strong>
+      <p>${ product.description }</p>
+      <br>
+      %if hasattr(product, 'available'):
+        %if product.available == True:
+        <div id="purchase-container">
+          ${form}
+        </div>
+        %else:
+        <h2>This product is out of stock</h2>
+        %endif
+      %elif hasattr(product, 'quantity'):
+        %if product.quantity == 0:
+          <h2>This product is out of stock</h2>
+        %else:
+        <div id="purchase-container">
+          ${form}
+        </div>
+        %endif
+      %endif
+    </div>
+    <div class="col-md-6">
+      <img id="picture-modal" class="img-responsive pull-right product_img" src="${product.pictures.first().path}"/>
+    </div>
+  </div>
+</div>
+</%block>
+
+<%block name="right_sidebar">
+<div class="last5 opacity">
+<h5 class="top-padding remove-margin">Recently Viewed Products</h5>
+%for i in last5products:
+  <div class="last5-thumbnail">
+    <a href="/catalog/detail/${i.id}/"><img class="last5_size" src="${ i.pictures.first().path }"/></a>
+    <p>${i.name}</p>
+  </div>
+  %endfor
+</div>
+</%block>

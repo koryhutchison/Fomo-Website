@@ -1,0 +1,15 @@
+<%! from account import models as amod %>
+<%inherit file="app_base.htm" />
+
+<%block name="title">Sign Up</%block>
+
+<%block name="add_breadcrumb">
+  <li><a href="/account/login">Login</a></li>
+  <li class="active">Sign Up</li>
+</%block>
+
+<%block name="content">
+    <div>
+      ${ form }
+    </div>
+</%block>
