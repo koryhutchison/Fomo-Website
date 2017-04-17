@@ -1,1 +1,5 @@
-This is my readme for FOMO
+# Fomo Website
+
+This is a project that I have worked on for the past semester in the Junior Core of the Information Systems Program at BYU. The case that was given to us was to make a website for an imaginary company called the Family Oriented Music Organization (Hence the acronym) and this is my version of the website. In the program, we worked on our sites individually as teams of 4. Then at the end of the semester, we had to implement a site on a real world server. This project gave me a lot of experience with Python, JavaScript, Django, Django-Mako-Plus, and PostgreSQL. 
+
+The file in the main directory called “initialize.py” is the file that will add all the records to the database such as users and products. This site was written completely from scratch after going through the initial setup from Conan Albrecht in the Django-Mako-Plus tutorial on this site: http://django-mako-plus.readthedocs.io
